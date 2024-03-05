@@ -25,7 +25,6 @@ class UsersController extends Controller
         if(Auth::attempt($credentials)){
             return redirect()->intended('/dashboard');
         }
-        dd($credentials);
         return redirect('/register')->withErrors('something went wrong , please register first ');
     }
     public function Dashboard(){
