@@ -21,11 +21,10 @@ class UsersController extends Controller
     }
     public function Login(Request $request){
         $credentials = $request->only('email','password');
-
         if(Auth::attempt($credentials)){
-            return redirect()->intended('/dashboard');
+            return redirect('/dashboard');
         }
-        return redirect('/register')->withErrors('something went wrong , please register first ');
+        return redirect()->back()->withErrors('user not found');
     }
     public function Dashboard(){
         return view('dashboard');
