@@ -29,4 +29,7 @@ class UsersController extends Controller
     public function Dashboard(){
         return view('dashboard');
     } 
+    public function require(){
+        return view('require');
+    }
 }

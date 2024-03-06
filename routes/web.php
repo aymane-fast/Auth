@@ -31,3 +31,5 @@ Route::get('/login', function(){
 Route::post('/loginAction', [UsersController::class, 'Login']);
 
 Route::get('/dashboard', [UsersController::class, 'Dashboard']);
+
+Route::get('/require',[UsersController::class, 'require'])->middleware('auth');
