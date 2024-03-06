@@ -7,14 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-@if (Auth::check())
-    <h2>Welcom to your dashboard {{ $name = Auth::user()->name }}</h2>
-@endif
 
 <body>
-
     <h1>dashboard</h1>
-    {{-- <h2>welcom {{ $name }}!</h2> --}}
+    {{-- greeting the user with his name  --}}
+    
+        <h3>Welcom to your dashboard {{ $name = Auth::user()->name }}</h3>
+    {{-- checking the user role to render link to users list --}}
+    @if (Auth::check())
+        @if (Auth::user()->role === 'admin')
+            <a href="/listUsers">la list des users</a>
+        @endif
+    @endif
 
 
 </body>

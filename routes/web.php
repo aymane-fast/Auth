@@ -30,6 +30,14 @@ Route::get('/login', function(){
 });
 Route::post('/loginAction', [UsersController::class, 'Login']);
 
-Route::get('/dashboard', [UsersController::class, 'Dashboard']);
 
-Route::get('/require',[UsersController::class, 'require'])->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [UsersController::class, 'Dashboard']);
+
+    Route::middleware('admin')->group(function(){
+        Route::get('/listUsers', [UsersController::class, 'listUsers'])->middleware('admin');
+        Route::get('/delete/{id}', [UsersController::class, 'delete']);
+    });
+    
+});
