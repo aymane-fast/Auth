@@ -31,13 +31,13 @@ Route::get('/login', function(){
 Route::post('/loginAction', [UsersController::class, 'Login']);
 
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UsersController::class, 'Dashboard']);
-
     Route::middleware('admin')->group(function(){
         Route::get('/listUsers', [UsersController::class, 'listUsers'])->middleware('admin');
         Route::get('/delete/{id}', [UsersController::class, 'delete']);
+        Route::get('/Refuse/{id}', [UsersController::class, 'Refuse']);
+        Route::get('/Accept/{id}', [UsersController::class, 'Accept']);
+        Route::get('/Attent/{id}', [UsersController::class, 'Attent']);
     });
-    
 });
