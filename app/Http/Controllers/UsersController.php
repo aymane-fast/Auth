@@ -24,21 +24,20 @@ class UsersController extends Controller
         ]);
         return redirect('/login');
     }
-
-    public function Login(Request $request){
-        $credentials = $request->only('email', 'password');
-        // using auth to login using the credentials
-        if(Auth::attempt($credentials) && Auth::user()->role == 'admin' ){
+public function Login(Request $request){
+    $credentials = $request->only('email', 'password');
+    // using auth to login using the credentials
+    if(Auth::attempt($credentials)){
+        if(Auth::user()->role == 'admin'){
             return redirect('/listUsers');
-            if (Auth::attempt($credentials) && Auth::user()->role == 'user') {
-                return redirect('/dashboard');
-            }
-        
         }
-        return redirect()->back()->withErrors('user not found');
+        elseif(Auth::user()->role == 'user'){
+            return redirect('/dashboard');
+        }
     }
-
-
+    return redirect()->back()->withErrors('user not found');
+}
+    //logout method
     public function delete($id){
         User::destroy($id);
         return redirect('/listUsers');
@@ -68,6 +67,7 @@ class UsersController extends Controller
         $users = User::all();
         return view('ListUsers')->with('users',  $users);
     }
+
     public function Dashboard(){
         return view('dashboard');
     } 

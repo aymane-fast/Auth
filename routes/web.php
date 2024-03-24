@@ -33,9 +33,9 @@ Route::post('/loginAction', [UsersController::class, 'Login']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UsersController::class, 'Dashboard']);
-    Route::get('/logout', 'UsersController@logout');
+    Route::get('/logout', [UsersController::class, 'logout']);
     Route::middleware('admin')->group(function(){
-        Route::get('/listUsers', [UsersController::class, 'listUsers'])->middleware('admin');
+        Route::get('/listUsers', [UsersController::class, 'listUsers']);
         Route::get('/delete/{id}', [UsersController::class, 'delete']);
         Route::get('/Refuse/{id}', [UsersController::class, 'Refuse']);
         Route::get('/Accept/{id}', [UsersController::class, 'Accept']);
