@@ -39,6 +39,7 @@
     </table>
     <br>
     <button><a href="/dashboard">back to dashboard</a></button>
+    <a href="{{ url('/logout') }}">Logout</a>
 </body>
 
 </html>

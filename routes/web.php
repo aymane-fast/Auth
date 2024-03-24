@@ -33,6 +33,7 @@ Route::post('/loginAction', [UsersController::class, 'Login']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UsersController::class, 'Dashboard']);
+    Route::get('/logout', 'UsersController@logout');
     Route::middleware('admin')->group(function(){
         Route::get('/listUsers', [UsersController::class, 'listUsers'])->middleware('admin');
         Route::get('/delete/{id}', [UsersController::class, 'delete']);

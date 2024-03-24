@@ -26,13 +26,12 @@ class UsersController extends Controller
     }
 
     public function Login(Request $request){
-
-        $credentials = $request->only('email','password');
-        //using auth to login using the credentials
-        if(Auth::attempt($credentials)){
-            return redirect('/dashboard');
-            if (Auth::user()->role === 'admin'){
-                return redirect('/listUsers');
+        $credentials = $request->only('email', 'password');
+        // using auth to login using the credentials
+        if(Auth::attempt($credentials) && Auth::user()->role == 'admin' ){
+            return redirect('/listUsers');
+            if (Auth::attempt($credentials) && Auth::user()->role == 'user') {
+                return redirect('/dashboard');
             }
         
         }
@@ -72,4 +71,9 @@ class UsersController extends Controller
     public function Dashboard(){
         return view('dashboard');
     } 
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/login'); // Redirect to login page after logout
+    }
 }

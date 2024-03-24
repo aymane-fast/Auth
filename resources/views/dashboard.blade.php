@@ -25,5 +25,7 @@
     @if ($status=== 'accepted')
         <h1>you are accepted</h1>
     @endif
+    
+    <a href="{{ url('/logout') }}">Logout</a>
 </body>
 </html>
