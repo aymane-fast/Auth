@@ -31,6 +31,7 @@ Route::get('/login', function(){
 Route::post('/loginAction', [UsersController::class, 'Login']);
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [UsersController::class, 'Dashboard']);
     Route::get('/logout', [UsersController::class, 'logout']);
@@ -40,5 +41,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/Refuse/{id}', [UsersController::class, 'Refuse']);
         Route::get('/Accept/{id}', [UsersController::class, 'Accept']);
         Route::get('/Attent/{id}', [UsersController::class, 'Attent']);
+        Route::post('/grades', 'GradeController@store')->name('grades.store');
     });
 });

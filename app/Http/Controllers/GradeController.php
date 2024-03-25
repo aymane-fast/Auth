@@ -1,24 +1,21 @@
 <?php
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use App\Models\Grade;
+use Illuminate\Http\Request;
 
-class CreateGradesTable extends Migration
+class GradeController extends Controller
 {
-    public function up()
+    public function store(Request $request)
     {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->id();
-            $table->integer('value');
-            $table->foreignId('module_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
-        });
-    }
+        $data = $request->validate([
+            'user_id' => 'required',
+            'module_id' => 'required',
+            'value' => 'required',
+        ]);
 
-    public function down()
-    {
-        Schema::dropIfExists('grades');
+        Grade::create($data);
+
+        return back()->with('success', 'Grade added successfully');
     }
 }

@@ -9,10 +9,13 @@
 </head>
 
 <body>
-    <h1>dashboard</h1>
+    <h3>Welcom {{ $name = Auth::user()->name }}</h3>
+    
 
-    <h3>Welcom to your dashboard {{ $name = Auth::user()->name }}</h3>
-    <h3>Welcom to your status is {{ $status = Auth::user()->accepted }}</h3>
+    @php
+        $status = Auth::user()->accepted;
+    @endphp
+
 
     @if ($status=== 'refuse')
         <h1>votre dossier et refuser , contacter l'administration </h1>

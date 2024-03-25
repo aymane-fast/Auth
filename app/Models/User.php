@@ -23,4 +23,8 @@ class User extends Authenticatable
         'cin',
         'password',
     ];
+    public function grades()
+{
+    return $this->hasMany(Grade::class);
+}
 };
