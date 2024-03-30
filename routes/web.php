@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/Refuse/{id}', [UsersController::class, 'Refuse']);
         Route::get('/Accept/{id}', [UsersController::class, 'Accept']);
         Route::get('/Attent/{id}', [UsersController::class, 'Attent']);
-        Route::post('/grades', 'GradeController@store')->name('grades.store');
+        Route::post('/gradeStore', [GradeController::class, 'store'])->name('grades.store');
+        Route::get('/grades', [GradeController::class, 'storeView'])->name('storeView');
     });
 });
