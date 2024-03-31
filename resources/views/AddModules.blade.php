@@ -27,5 +27,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Add Module</button>
+        <br><br>
+        <a href="{{ route('fillier.index') }}" class="btn btn-secondary">Back to Filliers</a>
     </form>
 </div>

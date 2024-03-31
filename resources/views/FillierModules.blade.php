@@ -25,3 +25,5 @@
         </table>
     @endif
 </div>
+<br><br><br>
+<a href="{{ route('modules.add') }}" class="btn btn-primary">Add Module</a>
