@@ -22,9 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //register 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [UsersController::class, 'RegisterView']);
 Route::post('/RegisterAction', [UsersController::class, 'Register']);
 
 //login

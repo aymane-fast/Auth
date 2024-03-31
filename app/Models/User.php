@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'cin',
         'password',
+        'fillier_id',
     ];
     public function grades()
 {

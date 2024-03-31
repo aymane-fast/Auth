@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('CIN')->unique();
             $table->string('role')->default('user');
             $table->string('accepted')->default('attent');
+            $table->foreignId('fillier_id')->constrained();
             $table->string('password');
             $table->timestamps();
         });

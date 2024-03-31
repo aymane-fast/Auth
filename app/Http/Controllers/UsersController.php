@@ -7,12 +7,19 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Models\Fillier;
 use App\Models\Grade;
 
 use function Laravel\Prompts\password;
 
 class UsersController extends Controller
 {
+    //register view 
+    public function RegisterView()
+    {
+        $filliers = Fillier::all();
+        return view('register', ['filliers' => $filliers]);
+    }
     public function Register(Request $request)
     {
         //storing users in the database 
@@ -22,6 +29,7 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'cin' => $request->cin,
+            'fillier_id' => $request->fillier_id,
             'password' => Hash::make($request->password),
         ]);
         return redirect('/login');

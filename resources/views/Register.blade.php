@@ -13,7 +13,7 @@
     <input type="password" name="password" ><br><br>
     fillier: <br>
     <select name="fillier_id">
-        @foreach ($filiers as $fillier)
+        @foreach ($filliers as $fillier)
             <option value="{{ $fillier->id }}">{{ $fillier->name }}</option>
         @endforeach
     </select><br><br>
