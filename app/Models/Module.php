@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'hours'];
+    protected $fillable = ['name', 'description', 'hours', 'fillier_id'];
     public function fillier()
     {
         return $this->belongsTo(Fillier::class);

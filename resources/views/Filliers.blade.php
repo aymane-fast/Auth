@@ -1,6 +1,6 @@
 @foreach ($filliers as $fillier)
-    <a href="{{ route('filiers.modules', ['id' => $fillier->id]) }}">{{ $fillier->name }}</a>
+    <a href="{{ route('filiers.modules', ['id' => $fillier->id]) }}">{{ $fillier->name }}</a><br>
 @endforeach
  <br>
-
-<a href="/add_fililer">Add Fillier</a>
+<br><br>
+<a href="/AddFilliers">Add Fillier</a>

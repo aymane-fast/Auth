@@ -26,7 +26,7 @@ class FillierController extends Controller
     {
         $fillier = Fillier::find($request->id);
         $modules = $fillier->modules;
-        return view('FillierModules', compact('modules'));
+        return view('FillierModules', compact('modules', 'fillier'));
     }
    
 

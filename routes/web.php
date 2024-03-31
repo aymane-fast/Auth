@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\FillierController;
+use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,9 @@ Route::middleware('auth')->group(function () {
             return view('AddFillier');
         });
         Route::get('/filiers/{id}/modules', [FillierController::class, 'showModules'])->name('filiers.modules');
-
         Route::get('/filliers', [FillierController::class, 'index'])->name('fillier.index');
+        Route::post('/modules', [ModuleController::class, 'store'])->name('modules.store');
+        Route::get('/modules/add', [ModuleController::class, 'add'])->name('modules.add');
+
     });
 });
