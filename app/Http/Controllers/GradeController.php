@@ -22,12 +22,10 @@ class GradeController extends Controller
     }
     public function storeView()
     {
-        $grades = Grade::all();
 
         $students = User::where('role', 'user')->get();
         $modules = Module::all();
-        // dd($grades, $students, $modules);
 
-        return view('AddGrade', compact('grades', 'students', 'modules'));
+        return view('AddGrade', compact( 'students', 'modules'));
     }
 }

@@ -9,5 +9,8 @@ class Module extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'description', 'hours'];
-
+    public function fillier()
+    {
+        return $this->belongsTo(Fillier::class);
+    }
 }
