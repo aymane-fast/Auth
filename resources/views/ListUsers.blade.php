@@ -6,40 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <table border="1" >
-        @foreach ($users as $user)
-            @if ($user->role === 'user')
-                <tr >
-                    <td style="padding:10px">
-                        {{ $user->name }}
-                    </td>
-                    <td style="padding:10px">
-                        {{ $user->email }}
-                    </td>
-                    <td style="padding:10px">
-                        <a href="delete/{{$user->id}}">delete</a>
-                    </td>
-                    <td>
-                        <a href="Accept/{{$user->id}}">accept</a>
-                    </td>
-                    </td>
-                    <td>
-                        <a href="Refuse/{{$user->id}}">refuse</a>
-                    </td>
-                    <td>
-                        <a href="Attent/{{$user->id}}">Attent</a>
-                    </td>
+    <div class="container mt-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Fillier</th>
                 </tr>
-            @endif
-        @endforeach
-    </table>
-    <br>
-    <button><a href="/dashboard">back to dashboard</a></button>
-    <a href="{{ url('/logout') }}">Logout</a>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    @if ($user->role === 'user')
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->fillier->name }}</td>
+                            <td>
+                                <a href="delete/{{$user->id}}" class="btn btn-danger">Delete</a>
+                            </td>
+                            <td>
+                                <a href="Accept/{{$user->id}}" class="btn btn-success">Accept</a>
+                            </td>
+                            <td>
+                                <a href="Refuse/{{$user->id}}" class="btn btn-warning">Refuse</a>
+                            </td>
+                            <td>
+                                <a href="Attent/{{$user->id}}" class="btn btn-info">Attent</a>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+        <div class="mb-3">
+            <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+            <a href="/logout" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+    <!-- Add Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
