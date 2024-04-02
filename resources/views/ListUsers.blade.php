@@ -17,6 +17,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Status</th>
                     <th>Fillier</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->accepted }}</td>
                             <td>{{ $user->fillier->name }}</td>
                             <td>
                                 <a href="delete/{{$user->id}}" class="btn btn-danger">Delete</a>

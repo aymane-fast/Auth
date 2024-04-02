@@ -42,8 +42,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/Refuse/{id}', [UsersController::class, 'Refuse']);
         Route::get('/Accept/{id}', [UsersController::class, 'Accept']);
         Route::get('/Attent/{id}', [UsersController::class, 'Attent']);
+
+        //this route is the action to store the grade
         Route::post('/gradeStore', [GradeController::class, 'store'])->name('grades.store');
-        Route::get('/grades/add', [GradeController::class, 'storeView'])->name('storeView');
+        //this route displayes the form to add a grade for students in the selected fillier
+        Route::get('/grades/add/{fillier}', [GradeController::class, 'storeView'])->name('storeView');
+        // this route displays the form to select the fillier that we want to add grades to it
+        Route::get('/grades/select', [GradeController::class, 'gradesSelect'])->name('grades.select');
+
+
+
         Route::post('/AddFilliers/store', [FillierController::class, 'store'])->name('filliers.store');
         Route::get('/AddFilliers', function () {
             return view('AddFillier');

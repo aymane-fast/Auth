@@ -1,4 +1,4 @@
-@fore<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,11 +29,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
-</html>ach ($filliers as $fillier)
-    <a href="{{ route('filiers.modules', ['id' => $fillier->id]) }}">{{ $fillier->name }}</a><br>
-@endforeach
-<br>
-<br><br>
-<a href="/AddFilliers">Add Fillier</a>
-<br>
-<a href="/dashboard">Back to Dashboard</a>
+</html>
