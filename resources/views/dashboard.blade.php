@@ -34,7 +34,7 @@
     @if (Auth::user()->role === 'admin')
         <h1>you are an admin</h1>
         <a href="{{ url('/filliers') }}">Show Filliers</a><br>
-        <a href="{{ url('/modules/add') }}">Show Modules</a><br>
+        <a href="{{ url('/modules/add') }}">add Modules</a><br>
         <a href="{{ url('/listUsers') }}">Show Students status</a><br>
         <a href="{{ url('/grades/add') }}">Show Grades</a><br>
         <a href="{{ url('/logout') }}">Logout</a>
