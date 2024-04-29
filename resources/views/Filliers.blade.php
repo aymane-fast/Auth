@@ -1,4 +1,4 @@
-@fore<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,7 @@
 
 <body>
     <div class="container mt-5">
-        <h2>Filliers</h2>
+        <h1>Filliers</h1>
         <ul class="list-group mt-4">
             @foreach ($filliers as $fillier)
                 <li class="list-group-item">
@@ -29,11 +29,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
-</html>ach ($filliers as $fillier)
-    <a href="{{ route('filiers.modules', ['id' => $fillier->id]) }}">{{ $fillier->name }}</a><br>
-@endforeach
-<br>
-<br><br>
-<a href="/AddFilliers">Add Fillier</a>
-<br>
-<a href="/dashboard">Back to Dashboard</a>
+</html>
