@@ -34,8 +34,9 @@ Route::post('/loginAction', [UsersController::class, 'Login']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [UsersController::class, 'Dashboard']);
     Route::get('/logout', [UsersController::class, 'logout']);
+    Route::get('/dashboard', [UsersController::class, 'Dashboard']);
+    Route::get('/grades', [GradeController::class, 'showGrades'])->name('grades.show');
     Route::middleware('admin')->group(function () {
         // action proformed on users
         Route::controller(UsersController::class)->group(function(){

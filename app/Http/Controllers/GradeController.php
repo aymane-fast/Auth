@@ -28,4 +28,10 @@ class GradeController extends Controller
 
         return view('AddGrade', compact( 'students', 'modules'));
     }
+    public function showGrades()
+    {
+        $user = auth()->user();
+        $grades = Grade::where('user_id', $user->id)->get();
+        return view('grades.ShowGrades', compact('grades'));
+    }
 }

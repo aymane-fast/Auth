@@ -37,7 +37,6 @@ class UsersController extends Controller
     public function Login(Request $request)
     {
 
-
         $credentials = $request->only('email', 'password');
         // using auth to login using the credentials
         if (Auth::attempt($credentials)) {
@@ -105,7 +104,6 @@ class UsersController extends Controller
                 $message = "you are accepted";
                 break;
         }
-
         // Get the user's grades
         $grades = Auth::user()->grades;
 
