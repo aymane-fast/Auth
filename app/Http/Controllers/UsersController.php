@@ -41,11 +41,7 @@ class UsersController extends Controller
         $credentials = $request->only('email', 'password');
         // using auth to login using the credentials
         if (Auth::attempt($credentials)) {
-            if (Auth::user()->role == 'admin') {
-                return redirect('/listUsers');
-            } elseif (Auth::user()->role == 'user') {
-                return redirect('/dashboard');
-            }
+            return redirect('/dashboard');
         }
         return redirect()->back()->withErrors('user not found');
     }
@@ -85,12 +81,38 @@ class UsersController extends Controller
         return view('ListUsers')->with('users',  $users);
     }
 
+
     public function Dashboard()
     {
-        //getting grades
+        // Check if the user is an admin
+        if (Auth::user()->role === 'admin') {
+            return view('adminDashboard');
+        }
+
+        // If the user is not an admin, they are a normal user
+        // Get the user's status
+        $status = Auth::user()->accepted;
+        $message = '';
+
+        switch ($status) {
+            case 'refuse':
+                $message = "votre dossier et refuser , contacter l'administration";
+                break;
+            case 'attent':
+                $message = "votre dossier et cours de traitement";
+                break;
+            case 'accepted':
+                $message = "you are accepted";
+                break;
+        }
+
+        // Get the user's grades
         $grades = Auth::user()->grades;
-        return view('dashboard', compact('grades'));
+
+        // Redirect to the normal user dashboard
+        return view('dashboard', compact('grades', 'message'));
     }
+    
 
     public function logout()
     {

@@ -20,13 +20,13 @@ class FillierController extends Controller
     public function index()
     {
         $filliers = Fillier::all();
-        return view('Filliers', compact('filliers'));
+        return view('filliers.Filliers', compact('filliers'));
     }
     public function showModules(Request $request)
     {
         $fillier = Fillier::find($request->id);
         $modules = $fillier->modules;
-        return view('FillierModules', compact('modules', 'fillier'));
+        return view('filliers.FillierModules', compact('modules', 'fillier'));
     }
    
 
