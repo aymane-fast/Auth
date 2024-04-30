@@ -26,7 +26,7 @@ class GradeController extends Controller
         $students = User::where('role', 'user')->get();
         $modules = Module::all();
 
-        return view('AddGrade', compact( 'students', 'modules'));
+        return view('grades.AddGrade', compact( 'students', 'modules'));
     }
     public function showGrades()
     {

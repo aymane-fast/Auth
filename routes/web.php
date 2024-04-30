@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
         });
         // action proformed on grades
         Route::controller(GradeController::class)->group(function(){
-            Route::get('/gradeStore', 'store')->name('grades.store');
+            Route::post('/gradeStore', 'store')->name('grades.store');
             Route::get('grades/add', 'storeView')->name('storeView');
         });
         // action proformed on filliers

@@ -28,7 +28,7 @@
                     @foreach ($grades as $grade)
                         <tr>
                             <td>{{ $grade->module->name }}</td>
-                            <td>{{ $grade->grade }}</td>
+                            <td>{{ $grade->value }}</td>
                         </tr>
                     @endforeach
                 </tbody>
