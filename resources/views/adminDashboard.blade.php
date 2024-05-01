@@ -11,7 +11,7 @@
     <a href="{{ url('/filliers') }}">Show Filliers</a><br>
     <a href="{{ url('/modules/add') }}">add Modules</a><br>
     <a href="{{ url('/listUsers') }}">Show Students status</a><br>
-    <a href="{{ url('/grades/add') }}">Add Grades</a><br>
+    <a href="{{ route('grades.selectView') }}">Add Grades</a><br>
     <a href="{{ url('/logout') }}">Logout</a>
 </body>
 </html>

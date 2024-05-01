@@ -18,7 +18,7 @@ class UsersController extends Controller
     public function RegisterView()
     {
         $filliers = Fillier::all();
-        return view('register', ['filliers' => $filliers]);
+        return view('users.register', ['filliers' => $filliers]);
     }
     public function Register(Request $request)
     {

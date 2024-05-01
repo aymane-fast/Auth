@@ -48,8 +48,13 @@ Route::middleware('auth')->group(function () {
         });
         // action proformed on grades
         Route::controller(GradeController::class)->group(function(){
+            //this route is the old route  used to store the grades
             Route::post('/gradeStore', 'store')->name('grades.store');
-            Route::get('grades/add', 'storeView')->name('storeView');
+            //this route is used to show the form to shoos the fillier
+            Route::get('grades/select', 'selectFillierView')->name('grades.selectView');
+            //this route is used to show the form to add the grades to students from the selected fillier and shoos the module
+            Route::post('/selectFillier', 'selectFillier')->name('grades.select');
+
         });
         // action proformed on filliers
         Route::controller(FillierController::class)->group(function(){

@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Models\Fillier;
 use App\Models\Grade;
 use App\Models\User;
 use App\Models\Module;
@@ -8,25 +10,47 @@ use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
-    public function store(Request $request)
+        public function store(Request $request)
     {
-        $data = $request->validate([
-            'user_id' => 'required',
-            'module_id' => 'required',
-            'value' => 'required',
+        // Validate the request data
+        $request->validate([
+            'grades' => 'required|array',
+            'grades.*' => 'required|numeric|min:0|max:20',
+            'module_id' => 'required|exists:modules,id',
         ]);
+        // dd($request);
 
-        Grade::create($data);
+        // Get the module ID
+        $moduleId = $request->module_id;
 
-        return back()->with('success', 'Grade added successfully');
+        // Get the grades
+        $grades = $request->grades;
+
+        // Loop through the grades and store each one in the database
+        foreach ($grades as $studentId => $grade) {
+            Grade::create([
+                'user_id' => $studentId,
+                'module_id' => $moduleId,
+                'value' => $grade,
+            ]);
+        }
+
+        return back()->with('success', 'Grades added successfully');
     }
-    public function storeView()
+    
+    public function selectFillierView()
     {
+        $filliers = Fillier::all();
 
-        $students = User::where('role', 'user')->get();
-        $modules = Module::all();
+        return view('grades.AddGrade', compact('filliers'));
+    }
+    public function selectFillier(Request $request)
+    {
+        $fillier = Fillier::findOrFail($request->fillier_id);
+        $students = $fillier->students;
+        $modules = $fillier->modules;
 
-        return view('grades.AddGrade', compact( 'students', 'modules'));
+        return view('grades.add', compact('students', 'modules'));
     }
     public function showGrades()
     {
