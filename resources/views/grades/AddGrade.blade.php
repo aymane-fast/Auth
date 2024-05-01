@@ -1,6 +1,6 @@
 <!-- AddGrade.blade.php -->
 <h2>shoos a fillier to add grade</h2>
-<form action="{{ route('grades.select') }}" method="post">
+<form action="{{ route('grades.select') }}" method="get">
     @csrf
     <div class="form-group">
         <label for="fillier_id">Fillier:</label>
