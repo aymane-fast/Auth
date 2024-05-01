@@ -21,7 +21,7 @@
             @endforeach
         </ul>
         <div class="mt-4">
-            <a href="/AddFilliers" class="btn btn-primary">Add Fillier</a>
+            <a href='{{route('filliers.add')}}' class="btn btn-primary">Add Fillier</a>
             <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
         </div>
     </div>

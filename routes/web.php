@@ -58,8 +58,8 @@ Route::middleware('auth')->group(function () {
         });
         // action proformed on filliers
         Route::controller(FillierController::class)->group(function(){
-            Route::get('/AddFilliers/store', 'store')->name('filliers.store');
-            Route::get('/AddFilliers', 'index');
+            Route::POST('/AddFilliers/store', 'store')->name('filliers.store');
+            Route::get('/AddFilliers', 'addView')->name('filliers.add');
             Route::get('/filiers/{id}/modules', 'showModules')->name('filiers.modules');
             Route::get('/filliers', 'index')->name('fillier.index');
         });

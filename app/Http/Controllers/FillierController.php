@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FillierController extends Controller
 {
-   
+   //store new fillier
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -22,6 +22,12 @@ class FillierController extends Controller
         $filliers = Fillier::all();
         return view('filliers.Filliers', compact('filliers'));
     }
+    //showing the form to add a new fillier
+    public function addView()
+    {
+        return view('filliers.AddFillier');
+    }
+    //showing the modules of a fillier
     public function showModules(Request $request)
     {
         $fillier = Fillier::find($request->id);
