@@ -66,16 +66,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/filiers/{id}/modules', 'showModules')->name('filiers.modules');
             Route::get('/filliers', 'index')->name('fillier.index');
         });
-        // Route::post('/AddFilliers/store', [FillierController::class, 'store'])->name('filliers.store');
-        // Route::get('/AddFilliers', function () {
-        //     return view('AddFillier');
-        // });
-        Route::get('/filiers/{id}/modules', [FillierController::class, 'showModules'])->name('filiers.modules');
-        Route::get('/filliers', [FillierController::class, 'index'])->name('fillier.index');
-        Route::post('/modules', [ModuleController::class, 'store'])->name('modules.store');
-        Route::get('/modules/add', [ModuleController::class, 'add'])->name('modules.add');
 
-        // Route::post('/gradeStore', [GradeController::class, 'store'])
-        // Route::get('/grades/add', [GradeController::class, 'storeView'])
+        // action performed on modules
+        Route::controller(ModuleController::class)->group(function(){
+            Route::post('/modules', 'store')->name('modules.store');
+            Route::get('/modules/add', 'add')->name('modules.add');
+        });
+
+
     });
 });
