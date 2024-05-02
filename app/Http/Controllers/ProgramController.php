@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fillier;
+use App\Models\Module;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
@@ -9,13 +11,20 @@ class ProgramController extends Controller
 {
     public function index()
     {
-        $programs = Program::all();
-        return view('programs.index', compact('programs'));
+
+        
+            $filliers = Fillier::all();
+            return view('programs.index', compact('filliers'));
+        
     }
 
     public function create()
     {
-        return view('programs.create');
+        $filliers = Fillier::all();
+        $modules = Module::all();
+        return view('programs.create', compact('filliers', 'modules'));
+
+
     }
 
     public function store(Request $request)
@@ -31,7 +40,9 @@ class ProgramController extends Controller
 
     public function edit(Program $program)
     {
-        return view('programs.edit', compact('program'));
+        $filliers = Fillier::all();
+        $modules = Module::all();
+        return view('programs.edit', compact('filliers','modules','program'));
     }
 
     public function update(Request $request, Program $program)
@@ -45,4 +56,5 @@ class ProgramController extends Controller
         $program->delete();
         return redirect()->route('programs.index');
     }
+    // index create show edit 
 }

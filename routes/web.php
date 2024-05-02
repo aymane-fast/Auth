@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GradeController;
@@ -39,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/grades', [GradeController::class, 'showGrades'])->name('grades.show');
     Route::middleware('admin')->group(function () {
         // action proformed on users
-        Route::controller(UsersController::class)->group(function(){
+        Route::controller(UsersController::class)->group(function () {
             Route::get('/listUsers', 'listUsers');
             Route::get('/delete/{id}', 'delete');
             Route::get('/Refuse/{id}', 'Refuse');
@@ -50,15 +51,14 @@ Route::middleware('auth')->group(function () {
         // action proformed on grades
         //this route is used to show the form to add the grades to stu dents from the selected fillier and shoos the module
         Route::match(['get', 'post'], '/selectFillier', [GradeController::class, 'selectFillier'])->name('grades.select');
-        Route::controller(GradeController::class)->group(function(){
+        Route::controller(GradeController::class)->group(function () {
             //this route is the old route  used to store the grades
             Route::post('/gradeStore', 'store')->name('grades.store');
             //this route is used to show the form to shoos the fillier
             Route::get('grades/select', 'selectFillierView')->name('grades.selectView');
-
         });
         // action proformed on filliers
-        Route::controller(FillierController::class)->group(function(){
+        Route::controller(FillierController::class)->group(function () {
             Route::POST('/AddFilliers/store', 'store')->name('filliers.store');
             Route::get('/AddFilliers', 'addView')->name('filliers.add');
             Route::get('/filiers/{id}/modules', 'showModules')->name('filiers.modules');
@@ -66,9 +66,34 @@ Route::middleware('auth')->group(function () {
         });
 
         // action performed on modules
-        Route::controller(ModuleController::class)->group(function(){
+        Route::controller(ModuleController::class)->group(function () {
             Route::post('/modules', 'store')->name('modules.store');
             Route::get('/modules/add', 'add')->name('modules.add');
+        });
+
+
+        // action performed on programs
+        Route::controller(ProgramController::class)->group(function () {
+            // Display a listing of the resource.
+            Route::get('/programs', 'index')->name('programs.index');
+
+            // Show the form for creating a new resource.
+            Route::get('/programs/create', 'create')->name('programs.create');
+
+            // Store a newly created resource in storage.
+            Route::post('/programs', 'store')->name('programs.store');
+
+            // Display the specified resource.
+            Route::get('/programs/{program}', 'show')->name('programs.show');
+
+            // Show the form for editing the specified resource.
+            Route::get('/programs/{program}/edit', 'edit')->name('programs.edit');
+
+            // Update the specified resource in storage.
+            Route::put('/programs/{program}', 'update')->name('programs.update');
+
+            // Remove the specified resource from storage.
+            Route::delete('/programs/{program}', 'destroy')->name('programs.destroy');
         });
     });
 });
