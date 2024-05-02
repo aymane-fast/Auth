@@ -46,17 +46,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/Accept/{id}', 'Accept');
             Route::get('/Attent/{id}', 'Attent');
         });
+
         // action proformed on grades
+        //this route is used to show the form to add the grades to stu dents from the selected fillier and shoos the module
         Route::match(['get', 'post'], '/selectFillier', [GradeController::class, 'selectFillier'])->name('grades.select');
         Route::controller(GradeController::class)->group(function(){
             //this route is the old route  used to store the grades
             Route::post('/gradeStore', 'store')->name('grades.store');
             //this route is used to show the form to shoos the fillier
             Route::get('grades/select', 'selectFillierView')->name('grades.selectView');
-            //this route is used to show the form to add the grades to stu dents from the selected fillier and shoos the module
-            // Route::get('/selectFillier', 'selectFillier')->name('grades.select');
-
-
 
         });
         // action proformed on filliers
@@ -72,7 +70,5 @@ Route::middleware('auth')->group(function () {
             Route::post('/modules', 'store')->name('modules.store');
             Route::get('/modules/add', 'add')->name('modules.add');
         });
-
-
     });
 });
