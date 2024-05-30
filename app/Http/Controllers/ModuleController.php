@@ -22,7 +22,7 @@ class ModuleController extends Controller
         Module::create($data);
         return back()->with('success', 'Module added successfully');
     }
-    public function add()
+    public function create()
     {
         $filliers = Fillier::all();
         return view('AddModules', compact('filliers'));

@@ -42,7 +42,7 @@ class UsersController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/dashboard');
         }
-        return redirect()->back()->withErrors('user not found');
+        return back();
     }
     //logout method
     public function delete($id)

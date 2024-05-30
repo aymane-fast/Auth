@@ -9,6 +9,7 @@ class Fillier extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+    
     public function modules()
     {
         return $this->hasMany(Module::class);

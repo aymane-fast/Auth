@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
         // action performed on modules
         Route::controller(ModuleController::class)->group(function () {
             Route::post('/modules', 'store')->name('modules.store');
-            Route::get('/modules/add', 'add')->name('modules.add');
+            Route::get('/modules/add', 'create')->name('modules.add');
         });
 
 

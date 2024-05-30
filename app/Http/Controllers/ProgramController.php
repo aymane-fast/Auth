@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     public function index()
-    {
-
-        
+    {     
             $filliers = Fillier::all();
             return view('programs.index', compact('filliers'));
         
@@ -50,7 +48,7 @@ class ProgramController extends Controller
         $program->update($request->all());
         return redirect()->route('programs.index');
     }
-
+    
     public function destroy(Program $program)
     {
         $program->delete();

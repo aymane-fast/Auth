@@ -9,7 +9,7 @@ class Grade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['value', 'module_id', 'user_id'];
+    protected $fillable = ['value','controlle', 'module_id', 'user_id'];
 
     public function module() {
         return $this->belongsTo(Module::class);

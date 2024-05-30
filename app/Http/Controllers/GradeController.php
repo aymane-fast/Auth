@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
-        public function store(Request $request)
+    public function store(Request $request)
     {
         // Validate the request data
         $request->validate([
@@ -37,7 +37,7 @@ class GradeController extends Controller
 
         return back()->with('success', 'Grades added successfully');
     }
-    
+
     public function selectFillierView()
     {
         $filliers = Fillier::all();
