@@ -22,6 +22,7 @@
                     <tr>
                         <th>Module</th>
                         <th>Grade</th>
+                        <th>Controlle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                         <tr>
                             <td>{{ $grade->module->name }}</td>
                             <td>{{ $grade->value }}</td>
+                            <td>{{ $grade->controlle }}</td>
                         </tr>
                     @endforeach
                 </tbody>

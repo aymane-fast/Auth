@@ -17,6 +17,7 @@ class GradeController extends Controller
             'grades' => 'required|array',
             'grades.*' => 'required|numeric|min:0|max:20',
             'module_id' => 'required|exists:modules,id',
+            'controlle' => 'required',
         ]);
         // dd($request);
 
@@ -26,12 +27,16 @@ class GradeController extends Controller
         // Get the grades
         $grades = $request->grades;
 
+        $controlle = $request->controlle;
+
         // Loop through the grades and store each one in the database
         foreach ($grades as $studentId => $grade) {
             Grade::create([
                 'user_id' => $studentId,
                 'module_id' => $moduleId,
                 'value' => $grade,
+                'controlle'=> $controlle
+
             ]);
         }
 
